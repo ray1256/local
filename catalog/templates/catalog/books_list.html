@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Book List</h1>
+<!-- books_list 是根據model的class 去實作的-->
+<!-- 連檔案名稱都要符合 model的class -->
+{% if books_list %}
+<ul>
+  {% for book in books_list %}
+  <li>
+    <!--可以使用model內定義的function -->
+    <a href = "{{book.get_absolute_url}}">{{book.title}}</a>({{book.author}})
+  </li>
+  {% endfor %}
+  </ul>
+{% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
